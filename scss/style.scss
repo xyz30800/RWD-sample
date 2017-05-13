@@ -1,9 +1,101 @@
 @import "compass/reset";
-@import "imports/module";
+@import "imports/screen";
+@import "imports/mixin";
+@import "imports/imports";
+@import "imports/icon/style";
 
-.content {
-	h1 {
-		color: green;
-		background-color: rgba(66,133,244,0.5);
+*,*:before,*:after{
+	box-sizing: border-box;
+}
+img{
+	max-width: 100%;
+	height: auto ;
+}
+
+body {
+	font-family: "acumin-pro","Helvetica Neue",sans-serif;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+$width: 1080px;
+nav {
+	display: block;
+ 	@include pad(){
+		@include border-bottom-color(2px, rgba(0,0,0,0.2));
+	}
+
+	.container {
+		max-width: 1080px;
+		width: 100%;
+		margin: 0 auto;
+		padding: 32px 28px;
+		@include transition(padding, .4s);
+		@include clearfix();
+		@include pad(){
+			padding: 5px 10px;
+		}
+		> * {
+			float: left;
+			display: inline-block;
+			font-weight: bold;
+			height: 40px;
+			line-height: 40px;
+		}
+		.menu-btn {
+			display: none;
+			cursor: pointer;
+			@include pad(){
+				display: inline-block;
+				font-size: 28px;
+				width: 35px;
+				height: 35px;
+			}
+		}
+		.logo {
+			font-size: 32px;
+			color: rgba(0,0,0, 0.8);
+			@include pad(){
+				font-size: 24px;
+			}
+		}
+		.nav {
+			float: right;
+			a {
+				color: rgba(0,0,0, 0.7);
+				padding: 0 8px;
+				margin: 0 4px;
+				text-decoration: none;
+				display: inline-block;
+				&:last-child {
+				    background: rgba(0,0,0,0.8);
+				    color: rgba(255,255,255,0.9);
+				    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+				    @include transition(background, .2s);
+				    &:hover{
+				    	background: rgba(0,0,0,1);
+				    }
+				}
+				&:not(:last-child):hover{
+			    	@include border-bottom-color(1px, rgba(127,127,144, 0.9));
+			    }
+			    @include pad(){
+			    	&:not(:last-child) {
+			    		display: none;
+			    	}
+			    	&:last-child {
+						color: rgba(0,0,0, 0.7);
+						background: white;
+						box-shadow: none;
+						font-size: 14px;
+						padding: 0;
+						&:hover{
+					    	background: rgba(255,255,255,0.8);
+					    	text-decoration: underline;
+					    }
+			    	}
+			    }
+			}
+		}
 	}
 }
