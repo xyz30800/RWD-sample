@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../scss/imports/icon/fonts/icomoon.eot?v8igug');
-  src:  url('../scss/imports/icon/fonts/icomoon.eot?v8igug#iefix') format('embedded-opentype'),
-    url('../scss/imports/icon/fonts/icomoon.ttf?v8igug') format('truetype'),
-    url('../scss/imports/icon/fonts/icomoon.woff?v8igug') format('woff'),
-    url('../scss/imports/icon/fonts/icomoon.svg?v8igug#icomoon') format('svg');
+  src:  url('../scss/imports/icon/fonts/icomoon.eot?wi4ydg');
+  src:  url('../scss/imports/icon/fonts/icomoon.eot?wi4ydg#iefix') format('embedded-opentype'),
+    url('../scss/imports/icon/fonts/icomoon.ttf?wi4ydg') format('truetype'),
+    url('../scss/imports/icon/fonts/icomoon.woff?wi4ydg') format('woff'),
+    url('../scss/imports/icon/fonts/icomoon.svg?wi4ydg#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +24,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-menu2:before {
-  content: "\e901";
+.icon-menu:before {
+  content: "\e900";
+  color: #000;
+}
+.icon-twitter:before {
+  content: "\ea96";
 }
 
