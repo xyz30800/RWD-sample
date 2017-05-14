@@ -17,22 +17,43 @@ body {
 	max-width: 100%;
 	margin: 0 auto;
 }
+strong, b {
+    font-weight: bold;
+}
+a {
+	text-decoration: none;
+}
 
-$width: 1080px;
+.ckb {
+	position: fixed;
+	top: -999px;
+	left: -999px;
+	display: none;
+	@include opacity(0);
+}
+
+$container-width: 1080px;
 nav {
+	width: 100%;
+	background-color: white;
 	display: block;
- 	@include pad(){
+	top: 0;
+	left: 0;
+	z-index: 15;
+	position: fixed;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+ 	@include bigPhone(){
 		@include border-bottom-color(2px, rgba(0,0,0,0.2));
 	}
 
 	.container {
-		max-width: 1080px;
+		position: relative;
+		max-width: $container-width;
 		width: 100%;
 		margin: 0 auto;
 		padding: 32px 28px;
-		@include transition(padding, .4s);
 		@include clearfix();
-		@include pad(){
+		@include bigPhone(){
 			padding: 5px 10px;
 		}
 		> * {
@@ -45,16 +66,61 @@ nav {
 		.menu-btn {
 			display: none;
 			cursor: pointer;
-			@include pad(){
+			@include bigPhone(){
 				display: inline-block;
 				font-size: 28px;
-				width: 35px;
 				height: 35px;
+				margin: 0 10px;
+				transform:rotate(0deg);
+				@include transition(all, .2s);
 			}
 		}
-		.logo {
+		.menu-cover {
+			display: none;
+			@include bigPhone(){
+				position: fixed;
+				top: 50px;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(39,40,34,.3);
+				z-index: 10;
+			}
+		}
+		#menu-ckb {
+			@include bigPhone(){
+				&:checked {
+					~ .nav {
+						width: 220px;
+						height: auto;
+						display: block;
+						position: absolute;
+						top: 50px;
+						left: 0;
+						background-color: white;
+						z-index: 15;
+					}
+					~ .nav a {
+						display: block;
+						font-size: 16px;
+						padding-top: 8px;
+						&:nth-child(n+5) {
+				    		font-weight: normal;
+				    	}
+					}
+					~ .menu-btn {
+						transform:rotate(90deg);
+					}
+					~ .menu-cover {
+						display: block;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+		.logo a {
 			font-size: 32px;
-			color: rgba(0,0,0, 0.8);
+			color: rgba(0,0,0,0.8);
 			@include pad(){
 				font-size: 24px;
 			}
@@ -65,37 +131,214 @@ nav {
 				color: rgba(0,0,0, 0.7);
 				padding: 0 8px;
 				margin: 0 4px;
-				text-decoration: none;
 				display: inline-block;
-				&:last-child {
-				    background: rgba(0,0,0,0.8);
-				    color: rgba(255,255,255,0.9);
-				    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
-				    @include transition(background, .2s);
-				    &:hover{
-				    	background: rgba(0,0,0,1);
-				    }
-				}
-				&:not(:last-child):hover{
-			    	@include border-bottom-color(1px, rgba(127,127,144, 0.9));
+				&:hover {
+			    	@include border-bottom-color(1px, rgba(0,0,0,0.2));
 			    }
-			    @include pad(){
-			    	&:not(:last-child) {
-			    		display: none;
-			    	}
-			    	&:last-child {
-						color: rgba(0,0,0, 0.7);
-						background: white;
-						box-shadow: none;
-						font-size: 14px;
-						padding: 0;
-						&:hover{
-					    	background: rgba(255,255,255,0.8);
-					    	text-decoration: underline;
-					    }
-			    	}
+			    &:nth-child(n+5) {
+			    	display: none;
 			    }
 			}
+		    @include bigPhone(){
+		    	display: none;
+		    }
+		}
+		.buy-sub {
+			float: right;
+			padding: 0 8px;
+			margin: 0 4px;
+			background: rgba(0,0,0,0.8);
+		    color: rgba(255,255,255,0.9);
+		    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+		    @include transition(background, .2s);
+		    &:hover{
+		    	background: rgba(0,0,0,1);
+		    }
+		    @include bigPhone(){
+		    	color: rgba(0,0,0, 0.7);
+				background: white;
+				box-shadow: none;
+				font-size: 14px;
+				padding: 0;
+				&:hover{
+			    	background: rgba(255,255,255,0.8);
+			    	text-decoration: underline;
+			    }
+		    }
+		}
+	}
+}
+
+.banner {
+	position: relative;
+	display: block;
+	margin-top: 105px;
+	overflow: hidden;
+	background-image: url(../img/banner.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	@include bigPhone() {
+		margin-top: 50px;
+	}
+	&:before {
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    background-color: rgba(0, 0, 0, 0);
+	    z-index: 1;
+	 }
+	.container {
+		max-width: $container-width;
+		width: 100%;
+		margin: 0 auto;
+		padding: 35px 20px;
+		line-height: 40px;
+		z-index: 2;
+
+		h2 {
+			width: 60%;
+			color: rgba(0,0,0,0.5);
+			padding: 16px;
+			font-size: 30px;
+			@include text-shadow(0 0 10px rgba(39, 40, 34, .500));
+			@include pad(){
+				width: 100%;
+				font-size: 24px;
+			}
+			@include bigPhone(){
+		    	width: 100%;
+		    	font-size: 20px;
+		    	padding: 16px 20px;
+		    }
+		    @include minPhone {
+		    	width: 100%;
+				font-size: 16px;
+				padding: 14px 16px;
+			};
+		}
+	}
+}
+
+.theme {
+	display: block;
+	background: #d1d8da;
+	.container {
+		position: relative;
+		max-width: $container-width;
+		width: 100%;
+		margin: 0 auto;
+		padding: 5px 20px;
+		@include clearfix();
+
+		> div {
+			display: inline-block;
+			float: left;
+			padding: 35px 20px;
+			@include pad() {
+				float: none;
+				width: 100%;
+			}
+		}
+
+		.magaize {
+			width: 55%;
+			@include minDesktop() {
+				width: 50%;
+			}
+			@include pad() {
+				width: 100%;
+			}
+			h2, h3 {
+				line-height: 44px;
+				font-size: 36px;
+			}
+			h2 {
+				color: white;
+			}
+			> p {
+				margin: 35px 0;
+				line-height: 30px;
+				font-size: 25px;
+				letter-spacing: 1px;
+			}
+			.magaize-point {
+				display: inline-block;
+				height: auto;
+				width: 100%;
+				> .grid-half {
+					float: left;
+					display: inline-block;
+					width: calc(50% );
+					@include pad() {
+						float: none;
+						width: 100%;
+					}
+				}
+				p {
+					margin-bottom: 35px;
+					width: 100%;
+					line-height: 24px;
+					font-size: 16px;
+				}
+			}
+			> a {
+				width: 220px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				display: inline-block;
+				font-weight: bold;
+				border: 2px solid black;
+				color: black;
+				margin-bottom: 20px;
+				&:last-child {
+					width: 180px;
+					color: white;
+					background: rgba(0,0,0,0.8);
+			    	color: rgba(255,255,255,0.9);
+			    	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+					border: 2px solid rgba(0,0,0,0.8);
+				}
+				&:hover {
+					@include opacity(0.9);
+				}
+			}
+		}
+		.magaize-cover {
+			width: 45%;
+			line-height: 40px;
+			margin-top: -180px;
+			text-align: center;
+			z-index: 3;
+			@include minDesktop() {
+				margin-top: 0;
+				width: 50%;
+			}
+			@include pad() {
+				padding-top: 0;
+				width: 100%;
+			}
+			h2 {
+				font-size: 28px;
+				margin-bottom: 20px;
+				.release-day {
+					color: #58bb9c;
+				}
+			}
+			
+			img {
+				transform: scale(0.98);
+				box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+	    		@include transition(transform, .2s);
+	 			&:hover {
+	 				transform: scale(1);
+	 			}
+	 		}
 		}
 	}
 }
