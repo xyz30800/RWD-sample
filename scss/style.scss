@@ -21,6 +21,7 @@ strong, b {
     font-weight: bold;
 }
 a {
+	color: rgba(0,0,0,0.8);
 	text-decoration: none;
 }
 
@@ -599,7 +600,7 @@ nav {
 		margin: 0 auto;
 		padding: 5px 20px;
 		@include clearfix();
-
+		
 		h2 {
 			font-size: 36px;
 		}
@@ -608,6 +609,16 @@ nav {
 			width: 33.333%;
 			float: left;
 			margin-top: 25px;
+			&:last-child {
+				width: 100%;
+				text-align: center;
+				margin: 50px 0;
+				h3 {
+					width: 40%;
+					display: inline-block;
+					font-size: 25px;
+				}
+			}
 
 			> div {
 				position: relative;
@@ -636,4 +647,91 @@ nav {
 			}
 		}
 	}
+}
+
+footer {
+	display: block;
+  	width: 100%;
+	background-color: rgba(0,0,0,0.8);
+
+  	.container {
+  		position: relative;
+		max-width: $container-width;
+		width: 100%;
+		margin: 0 auto;
+		padding: 15px 20px;
+		@include clearfix();
+
+		a, p {
+			color: rgba(255,255,255,0.8);
+		}
+		a:hover {
+			color: rgba(255,255,255,0.9);
+		}
+
+		> div {
+			display: inline-block;
+			float: left;
+			width: 33.33333%;
+			padding: 15px 20px;
+			@include midPhone() {
+				float: none;
+				width: 100%;
+			}
+		}
+		.info {
+			.logo {
+				font-size: 40px;
+			}
+			p {
+				margin: 40px 0;
+				line-height: 20px;
+				font-size: 16px;
+			}
+			.social {
+				font-size: 20px;
+				margin-right: 10px
+			}
+		}
+		.nav {
+			padding-left: 70px;
+			@include midPhone() {
+				padding: 15px 20px;
+			}
+			a {
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 5px;
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 20px;
+				&:nth-child(5), &:nth-child(11) {
+					margin-bottom: 18px;
+				}
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		.ref {
+			@include midPhone() {
+				display: none;
+			}
+			a, p{
+				color: rgba(255,255,255,0.4);
+				font-size: 14px;
+			}
+			p {
+				margin-bottom: 40px;
+				line-height: 20px;
+			}
+			a {
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 5px;
+				font-weight: bold;
+				line-height: 20px;
+			}
+		}
+  	}
 }
