@@ -265,6 +265,7 @@
 	</footer>
 
 	<script>
+		window.addEventListener("load", function() { window. scrollTo(0, 0); });
 		window.addEventListener('scroll', () => {
 			const elClass = document.querySelector('nav .container').classList;
 			let scrollTop = window.scrollY;
