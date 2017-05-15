@@ -52,12 +52,13 @@ nav {
 		max-width: $container-width;
 		width: 100%;
 		margin: 0 auto;
-		padding: 10px 28px;
+		// padding: 10px 28px;
+		padding: 32px 28px;
 		@include transition(padding, .5s);
 		@include clearfix();
 
 		&.nav-scroll {
-			padding: 32px 28px;
+			padding: 10px 28px;
 			@include bigPhone(){
 				padding: 5px 10px;
 			}
@@ -182,14 +183,14 @@ nav {
 .banner {
 	position: relative;
 	display: block;
-	margin-top: 105px;
+	padding-top: 105px;
 	overflow: hidden;
 	background-image: url(../img/banner.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	@include bigPhone() {
-		margin-top: 50px;
+	@include pad() {
+		padding-top: 50px;
 	}
 	&:before {
 	    content: '';

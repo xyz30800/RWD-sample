@@ -268,7 +268,7 @@
 		window.addEventListener('scroll', () => {
 			const elClass = document.querySelector('nav .container').classList;
 			let scrollTop = window.scrollY;
-			if (scrollTop < 50) {
+			if (scrollTop > 50) {
 				elClass.add("nav-scroll");
 			} else {
 				elClass.remove("nav-scroll");
