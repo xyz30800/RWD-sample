@@ -190,6 +190,9 @@ nav {
 	background-size: cover;
 	background-position: center;
 	@include pad() {
+		padding-top: 100px;
+	}
+	@include bigPhone() {
 		padding-top: 50px;
 	}
 	&:before {
@@ -210,7 +213,9 @@ nav {
 		padding: 30px 20px;
 		line-height: 40px;
 		z-index: 2;
-
+		@include midPhone {
+			padding: 12px;
+		};
 		h2 {
 			width: 55%;
 			color: rgba(0,0,0,0.5);
@@ -223,12 +228,12 @@ nav {
 			}
 			@include bigPhone(){
 		    	width: 100%;
-		    	font-size: 20px;
 		    	padding: 16px 20px;
 		    }
 		    @include minPhone {
+		    	line-height: 30px;
 		    	width: 100%;
-				font-size: 16px;
+		    	font-size: 20px;
 				padding: 14px 16px;
 			};
 		}
@@ -590,7 +595,7 @@ nav {
 .readers {
 	display: inline-block;
   	width: 100%;
-	@include pad() {
+	@include bigPhone() {
 		display: none;
 	}
 
