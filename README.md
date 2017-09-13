@@ -1,7 +1,9 @@
 # RWD-sample
 
-這份是照著 https://www.offscreenmag.com/ ，
-用 Sass 切出相似的版型及效果，包含 RWD。
+這練習是依照著 https://www.offscreenmag.com/
 
-圖片來源: https://unsplash.com/
-Icon: https://icomoon.io/
+* 在 Ruby 環境下的 Compass，撰寫 Sass 編譯成 Css。
+* 切出與網站相似的版型及效果，以及包含 RWD 的功能。
+
+* 圖片素材來源: https://unsplash.com/
+* Icon素材來源: https://icomoon.io/
